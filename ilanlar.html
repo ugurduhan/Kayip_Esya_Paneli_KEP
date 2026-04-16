@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İlan Ara - Kayıp Eşya Paneli</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+</head>
+<body>
+    <header class="site-top-header">
+        
+        <div class="project-banner">
+            ⚠️ Bu site bir Tübitak projesidir ve test aşamasındadır. Destek için instagram @rg4.rr
+        </div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">Kayıp Eşya Paneli</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">İlan Ver</a>
+                <a href="ilanlar.html" class="nav-link active">İlan Ara</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        
+        <section class="listings-list">
+            <h2>Güncel Kayıp Eşya İlanları</h2>
+            
+            <div class="filter-container">
+                <input type="text" id="search-bar" placeholder="İlan Başlığına Göre Ara (örn: cüzdan, telefon...)">
+            </div>
+
+            <div id="listings-container">
+                <p>İlanlar yükleniyor...</p>
+                </div>
+        </section>
+    </main>
+
+    <script src="js/firebase-config.js"></script>
+    <script src="js/ilanlar.js"></script> </body>
+</html>
