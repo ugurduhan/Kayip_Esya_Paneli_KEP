@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Firebase Servislerini Tanımla (En tepede olmalı ki herkes görsün)
+    
     const db = firebase.firestore(); 
     const auth = firebase.auth();
     const provider = new firebase.auth.GoogleAuthProvider();
     let sonIlanZamani = localStorage.getItem('sonIlanTarihi') || 0;
 
-    // 2. HTML Elemanlarını Seç
+    // DOM Elementleri
     const loginBtn = document.getElementById('login-btn');
     const logoutBtn = document.getElementById('logout-btn');
     const loginWarning = document.getElementById('login-warning');
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('lost-item-form');
     const submitButton = document.getElementById('submit-button');
 
-    // 3. Giriş İşlemi
+    // Google Login
     if(loginBtn) {
         loginBtn.addEventListener('click', () => {
             auth.signInWithPopup(provider)
@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Çıkış İşlemi
     if(logoutBtn) {
         logoutBtn.addEventListener('click', (e) => {
             e.preventDefault(); 
@@ -38,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. Oturum Durumunu İzle
+    // Auth state listener - Giriş durumuna göre arayüzü güncelle
     auth.onAuthStateChanged((user) => {
         if (user) {
             if(loginWarning) loginWarning.classList.add('hidden');
@@ -52,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // 6. Form Dinamikleri (Karakter sayacı ve Koşullu alanlar)
+    // Form UI işlemleri (Karakter sayacı & dinamik alanlar)
     if (form) { 
         const esyaAciklama = document.getElementById('esya-aciklama');
         const charCounter = document.getElementById('char-counter');
@@ -72,18 +71,20 @@ document.addEventListener('DOMContentLoaded', () => {
             if (targetField) targetField.classList.remove('hidden');
         });
 
-        // 7. VERİTABANINA KAYDETME (ASIL ÖNEMLİ KISIM)
+        // İlan Gönderme & DB Kayıt
         form.addEventListener('submit', (e) => {
             e.preventDefault(); 
+            
             const simdi = Date.now();
-    const birGun = 24 * 60 * 60 * 1000;
+            const birGun = 24 * 60 * 60 * 1000;
 
-    if (simdi - sonIlanZamani < birGun) {
-        const kalanMs = birGun - (simdi - sonIlanZamani);
-        const kalanSaat = Math.floor(kalanMs / (1000 * 60 * 60));
-        alert(`Sabotajı engellemek için günde sadece 1 ilan verebilirsiniz. ${kalanSaat} saat sonra tekrar deneyin.`);
-        return; // Kodun devam etmesini (veritabanına yazmasını) burada durdurur
-    }
+            // Spam koruması
+            if (simdi - sonIlanZamani < birGun) {
+                const kalanMs = birGun - (simdi - sonIlanZamani);
+                const kalanSaat = Math.floor(kalanMs / (1000 * 60 * 60));
+                alert(`Sabotajı engellemek için günde sadece 1 ilan verebilirsiniz. ${kalanSaat} saat sonra tekrar deneyin.`);
+                return; 
+            }
             
             submitButton.disabled = true;
             submitButton.textContent = 'Gönderiliyor...';
@@ -104,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
             };
 
-            // Aktif olan detay alanındaki (İETT, Metro vb.) verileri topla
             const activeFieldId = `detay-${data.tasit}`;
             const activeField = document.getElementById(activeFieldId);
             if (activeField) {
@@ -113,11 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Firestore'a gönder
             db.collection("kayipIlanlari").add(data)
                 .then(() => {
                     sonIlanZamani = Date.now();
-    localStorage.setItem('sonIlanTarihi', sonIlanZamani);
+                    localStorage.setItem('sonIlanTarihi', sonIlanZamani);
+                    
                     alert("Kayıp eşya ilanınız başarıyla eklendi.");
                     form.reset();
                     charCounter.textContent = `Kalan karakter: ${maxChars}`;
