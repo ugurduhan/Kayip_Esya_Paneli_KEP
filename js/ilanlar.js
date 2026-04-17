@@ -1,16 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Firebase Bağlantısını Kur
+    
     const db = firebase.firestore();
 
-    // 2. HTML Elemanlarını Seç
     const listingsContainer = document.getElementById('listings-container');
-    const searchBar = document.getElementById('search-bar');
+    const searchBar = document.getElementById('search-bar'); // TODO: Arama fonksiyonu eklenecek
 
-    // 3. Verileri Firestore'dan Çekme Fonksiyonu
+    // İlanları realtime dinle
     function ilanlariGetir() {
-        // 'kayipIlanlari' koleksiyonuna git ve tarihe göre sırala
         db.collection("kayipIlanlari").orderBy("timestamp", "desc").onSnapshot((querySnapshot) => {
-            listingsContainer.innerHTML = ""; // Yükleniyor yazısını temizle
+            listingsContainer.innerHTML = ""; 
 
             if (querySnapshot.empty) {
                 listingsContainer.innerHTML = "<p>Henüz hiç ilan verilmemiş.</p>";
@@ -20,11 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
             querySnapshot.forEach((doc) => {
                 const ilan = doc.data();
                 
-                // Her ilan için bir kart (div) oluştur
                 const ilanCard = document.createElement('div');
                 ilanCard.className = 'listing-card';
 
-                // Kartın içeriğini doldur
                 ilanCard.innerHTML = `
                     <div class="listing-header">
                         <h3>${ilan.baslik}</h3>
@@ -39,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <small>Yayınlayan: ${ilan.isim} ${ilan.soyisim}</small>
                     </div>
                 `;
+                
                 listingsContainer.appendChild(ilanCard);
             });
         }, (error) => {
@@ -47,6 +44,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Fonksiyonu çalıştır
     ilanlariGetir();
 });
