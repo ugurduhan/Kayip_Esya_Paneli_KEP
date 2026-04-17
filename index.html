@@ -12,26 +12,26 @@
 </head>
 <body>
     <header class="site-top-header">
-        
         <div class="project-banner">
             ⚠️ Bu site bir Tübitak projesidir ve test aşamasındadır. Destek için kaya.ugur0313@gmail.com
         </div>
 
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="index.html" class="nav-logo">Kayıp Eşya Paneli</a>
-            <div class="nav-links">
-                <a href="index.html" class="nav-link active">İlan Ver</a>
-                <a href="ilanlar.html" class="nav-link">İlan Ara</a>
-                <a href="#" id="logout-btn" class="nav-link hidden" style="color: red;">Çıkış Yap</a>
+        <nav class="navbar">
+            <div class="container nav-container">
+                <a href="index.html" class="nav-logo">Kayıp Eşya Paneli</a>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link active">İlan Ver</a>
+                    <a href="ilanlar.html" class="nav-link">İlan Ara</a>
+                    <a href="#" id="logout-btn" class="nav-link hidden" style="color: red;">Çıkış Yap</a>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     </header>
+
     <main class="container">
-        
         <section class="form-container">
             <h2>Kayıp Eşya İlanı Ver</h2>
+            
             <div id="login-warning" style="text-align: center; padding: 40px;">
                 <p style="font-size: 1.2rem; margin-bottom: 20px;">İlan vermek için lütfen giriş yapınız.</p>
                 <button id="login-btn" class="btn" style="max-width: 300px; background-color: #db4437;">
@@ -46,167 +46,169 @@
                     👤 <strong><span id="user-display-name"></span></strong> olarak giriş yaptınız.
                 </p>
             
-            
-            <form id="lost-item-form">
-                
-                <p class="form-section-title">Güvenli Bilgileriniz (Listede ASLA Gösterilmez)</p>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="isim">Adınız:</label>
-                        <input type="text" id="isim" required>
+                <form id="lost-item-form">
+                    
+                    <p class="form-section-title">Güvenli Bilgileriniz (Listede ASLA Gösterilmez)</p>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="isim">Adınız:</label>
+                            <input type="text" id="isim" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="soyisim">Soyadınız:</label>
+                            <input type="text" id="soyisim" required>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="soyisim">Soyadınız:</label>
-                        <input type="text" id="soyisim" required>
+                        <label for="telefon">Telefon Numaranız:</label>
+                        <input type="tel" id="telefon" placeholder="05XXXXXXXXX" required>
+                        <small>Bu bilgi gizli kalacaktır.</small>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="telefon">Telefon Numaranız:</label>
-                    <input type="tel" id="telefon" placeholder="05XXXXXXXXX" required>
-                    <small>Bu bilgi gizli kalacaktır.</small>
-                </div>
 
-                <hr>
+                    <hr>
 
-                <p class="form-section-title">Herkese Açık İlan Bilgileri</p>
-                
-                <div class="form-group">
-                    <label for="baslik">İlan Başlığı (Kayıp Eşya Özeti):</label>
-                    <input type="text" id="baslik" placeholder="Örn: Siyah Deri Cüzdan" required>
-                </div>
-                
-                <div class="form-row">
+                    <p class="form-section-title">Herkese Açık İlan Bilgileri</p>
+                    
                     <div class="form-group">
-                        <label for="kategori">Eşya Kategorisi:</label>
-                        <select id="kategori" required>
+                        <label for="baslik">İlan Başlığı (Kayıp Eşya Özeti):</label>
+                        <input type="text" id="baslik" placeholder="Örn: Siyah Deri Cüzdan" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="kategori">Eşya Kategorisi:</label>
+                            <select id="kategori" required>
+                                <option value="">Seçiniz...</option>
+                                <option value="Cüzdan">Cüzdan / Kartlık</option>
+                                <option value="Telefon">Telefon</option>
+                                <option value="Laptop">Laptop / Tablet</option>
+                                <option value="Çanta">Çanta (Sırt, El, Omuz)</option>
+                                <option value="Mücevherat">Mücevherat (Saat, Yüzük, Bileklik)</option>
+                                <option value="Anahtar">Anahtar / Anahtarlık</option>
+                                <option value="Diğer">Diğer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ilce">Kaybedilen İlçe:</label>
+                            <input type="text" id="ilce" placeholder="Kadıköy, Beşiktaş, Fatih..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tasit">Toplu Taşıma Aracı:</label>
+                        <select id="tasit" required>
                             <option value="">Seçiniz...</option>
-                            <option value="Cüzdan">Cüzdan / Kartlık</option>
-                            <option value="Telefon">Telefon</option>
-                            <option value="Laptop">Laptop / Tablet</option>
-                            <option value="Çanta">Çanta (Sırt, El, Omuz)</option>
-                            <option value="Mücevherat">Mücevherat (Saat, Yüzük, Bileklik)</option>
-                            <option value="Anahtar">Anahtar / Anahtarlık</option>
-                            <option value="Diğer">Diğer</option>
+                            <option value="IETT">İETT Otobüsü</option>
+                            <option value="Marmaray">Marmaray</option>
+                            <option value="Metro">Metro (M1, M2 vb.)</option>
+                            <option value="Taksi">Taksi</option>
+                            <option value="Minibus">Minibüs / Dolmuş</option>
+                            <option value="Vapur">Vapur / Motor</option>
+                            <option value="Diger">Diğer / Bilinmiyor</option>
                         </select>
                     </div>
+
+                    <div id="conditional-fields-container">
+                        
+                        <div id="detay-IETT" class="form-row hidden conditional-field">
+                            <div class="form-group">
+                                <label for="iett-hat">İETT Hat Kodu:</label>
+                                <input type="text" id="iett-hat" placeholder="Örn: 500T, KM34">
+                            </div>
+                            <div class="form-group">
+                                <label for="iett-kapi">Kapı Kodu (Zorunlu değil):</label>
+                                <input type="text" id="iett-kapi" placeholder="Örn: K3456">
+                            </div>
+                        </div>
+
+                        <div id="detay-Marmaray" class="form-row hidden conditional-field">
+                            <div class="form-group">
+                                <label for="marmaray-yon">Gidilen Yön:</label>
+                                <input type="text" id="marmaray-yon" placeholder="Örn: Halkalı yönü">
+                            </div>
+                            <div class="form-group">
+                                <label for="marmaray-saat">Saat Aralığı:</label>
+                                <input type="text" id="marmaray-saat" placeholder="Örn: 14:00 - 15:00">
+                            </div>
+                        </div>
+
+                        <div id="detay-Metro" class="form-row hidden conditional-field">
+                            <div class="form-group">
+                                <label for="metro-hat">Metro Hattı:</label>
+                                <input type="text" id="metro-hat" placeholder="Örn: M4 Kadıköy-Sabiha Gökçen">
+                            </div>
+                            <div class="form-group">
+                                <label for="metro-yon">Gidilen Yön:</label>
+                                <input type="text" id="metro-yon" placeholder="Örn: Yenikapı yönü">
+                            </div>
+                            <div class="form-group">
+                                <label for="metro-saat">Saat Aralığı:</label>
+                                <input type="text" id="metro-saat" placeholder="Örn: 09:00 - 09:30">
+                            </div>
+                        </div>
+
+                        <div id="detay-Taksi" class="form-row hidden conditional-field">
+                            <div class="form-group">
+                                <label for="taksi-nereden">Nereden (Yaklaşık):</label>
+                                <input type="text" id="taksi-nereden" placeholder="Örn: Mecidiyeköy">
+                            </div>
+                            <div class="form-group">
+                                <label for="taksi-nereye">Nereye (Yaklaşık):</label>
+                                <input type="text" id="taksi-nereye" placeholder="Örn: Levent">
+                            </div>
+                        </div>
+
+                        <div id="detay-Minibus" class="form-row hidden conditional-field">
+                            <div class="form-group">
+                                <label for="minibus-hat">Hat:</label>
+                                <input type="text" id="minibus-hat" placeholder="Örn: Kadıköy - Bostancı">
+                            </div>
+                            <div class="form-group">
+                                <label for="minibus-saat">Saat Aralığı:</label>
+                                <input type="text" id="minibus-saat" placeholder="Örn: 18:00 - 18:30">
+                            </div>
+                        </div>
+                        
+                        <div id="detay-Vapur" class="form-row hidden conditional-field">
+                            <div class="form-group">
+                                <label for="vapur-nereden">Nereden (İskele):</label>
+                                <input type="text" id="vapur-nereden" placeholder="Örn: Karaköy">
+                            </div>
+                            <div class="form-group">
+                                <label for="vapur-nereye">Nereye (İskele):</label>
+                                <input type="text" id="vapur-nereye" placeholder="Örn: Kadıköy">
+                            </div>
+                            <div class="form-group">
+                                <label for="vapur-saat">Saat Aralığı:</label>
+                                <input type="text" id="vapur-saat" placeholder="Örn: 12:00 - 13:00">
+                            </div>
+                        </div>
+
+                        <div id="detay-Diger" class="form-group hidden conditional-field">
+                            <label for="diger-aciklama">Araç/Yer Açıklaması:</label>
+                            <input type="text" id="diger-aciklama" placeholder="Örn: Bilinmeyen bir otobüs, Taksim civarı...">
+                        </div>
+                    </div>
+                    
                     <div class="form-group">
-                        <label for="ilce">Kaybedilen İlçe:</label>
-                        <input type="text" id="ilce" placeholder="Kadıköy, Beşiktaş, Fatih..." required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="tasit">Toplu Taşıma Aracı:</label>
-                    <select id="tasit" required>
-                        <option value="">Seçiniz...</option>
-                        <option value="İETT">İETT Otobüsü</option>
-                        <option value="Marmaray">Marmaray</option>
-                        <option value="Metro">Metro (M1, M2 vb.)</option>
-                        <option value="Taksi">Taksi</option>
-                        <option value="Minibüs">Minibüs / Dolmuş</option>
-                        <option value="Vapur">Vapur / Motor</option>
-                        <option value="Diğer">Diğer / Bilinmiyor</option>
-                    </select>
-                </div>
-
-                <div id="conditional-fields-container">
-                    
-                    <div id="detay-IETT" class="form-row hidden conditional-field">
-                        <div class="form-group">
-                            <label for="iett-hat">İETT Hat Kodu:</label>
-                            <input type="text" id="iett-hat" placeholder="Örn: 500T, KM34">
-                        </div>
-                        <div class="form-group">
-                            <label for="iett-kapi">Kapı Kodu (Zorunlu değil):</label>
-                            <input type="text" id="iett-kapi" placeholder="Örn: K3456">
-                        </div>
-                    </div>
-
-                    <div id="detay-Marmaray" class="form-row hidden conditional-field">
-                        <div class="form-group">
-                            <label for="marmaray-yon">Gidilen Yön:</label>
-                            <input type="text" id="marmaray-yon" placeholder="Örn: Halkalı yönü">
-                        </div>
-                        <div class="form-group">
-                            <label for="marmaray-saat">Saat Aralığı:</label>
-                            <input type="text" id="marmaray-saat" placeholder="Örn: 14:00 - 15:00">
-                        </div>
-                    </div>
-
-                    <div id="detay-Metro" class="form-row hidden conditional-field">
-                        <div class="form-group">
-                            <label for="metro-hat">Metro Hattı:</label>
-                            <input type="text" id="metro-hat" placeholder="Örn: M4 Kadıköy-Sabiha Gökçen">
-                        </div>
-                        <div class="form-group">
-                            <label for="metro-yon">Gidilen Yön:</label>
-                            <input type="text" id="metro-yon" placeholder="Örn: Yenikapı yönü">
-                        </div>
-                        <div class="form-group">
-                            <label for="metro-saat">Saat Aralığı:</label>
-                            <input type="text" id="metro-saat" placeholder="Örn: 09:00 - 09:30">
-                        </div>
-                    </div>
-
-                    <div id="detay-Taksi" class="form-row hidden conditional-field">
-                        <div class="form-group">
-                            <label for="taksi-nereden">Nereden (Yaklaşık):</label>
-                            <input type="text" id="taksi-nereden" placeholder="Örn: Mecidiyeköy">
-                        </div>
-                        <div class="form-group">
-                            <label for="taksi-nereye">Nereye (Yaklaşık):</label>
-                            <input type="text" id="taksi-nereye" placeholder="Örn: Levent">
-                        </div>
-                    </div>
-
-                    <div id="detay-Minibüs" class="form-row hidden conditional-field">
-                        <div class="form-group">
-                            <label for="minibus-hat">Hat:</label>
-                            <input type="text" id="minibus-hat" placeholder="Örn: Kadıköy - Bostancı">
-                        </div>
-                        <div class="form-group">
-                            <label for="minibus-saat">Saat Aralığı:</label>
-                            <input type="text" id="minibus-saat" placeholder="Örn: 18:00 - 18:30">
-                        </div>
+                        <label for="esya-aciklama">Eşyanın Detaylı Açıklaması:</label>
+                        <textarea id="esya-aciklama" rows="5" placeholder="Eşyanın ayırt edici özelliklerini giriniz..." maxlength="300"></textarea>
+                        <small id="char-counter">Kalan karakter: 300</small>
                     </div>
                     
-                    <div id="detay-Vapur" class="form-row hidden conditional-field">
-                        <div class="form-group">
-                            <label for="vapur-nereden">Nereden (İskele):</label>
-                            <input type="text" id="vapur-nereden" placeholder="Örn: Karaköy">
-                        </div>
-                        <div class="form-group">
-                            <label for="vapur-nereye">Nereye (İskele):</label>
-                            <input type="text" id="vapur-nereye" placeholder="Örn: Kadıköy">
-                        </div>
-                         <div class="form-group">
-                            <label for="vapur-saat">Saat Aralığı:</label>
-                            <input type="text" id="vapur-saat" placeholder="Örn: 12:00 - 13:00">
-                        </div>
+                    <div class="form-group">
+                        <label for="iletisim">İsteğe Bağlı Herkese Açık İletişim (Önerilir):</label>
+                        <input type="text" id="iletisim" placeholder="Sadece bu iş için açtığınız bir e-posta veya sosyal medya hesabı">
+                        <small>Eşyayı bulan kişinin size ulaşabilmesi için buraya (telefon numaranız dışında) güvenli bir iletişim bilgisi yazın.</small>
                     </div>
 
-                    <div id="detay-Diğer" class="form-group hidden conditional-field">
-                        <label for="diger-aciklama">Araç/Yer Açıklaması:</label>
-                        <input type="text" id="diger-aciklama" placeholder="Örn: Bilinmeyen bir otobüs, Taksim civarı...">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="esya-aciklama">Eşyanın Detaylı Açıklaması:</label>
-                    <textarea id="esya-aciklama" rows="5" placeholder="Eşyanın ayırt edici özelliklerini giriniz..." maxlength="300"></textarea>
-                    <small id="char-counter">Kalan karakter: 300</small>
-                </div>
-                <div class="form-group">
-                    <label for="iletisim">İsteğe Bağlı Herkese Açık İletişim (Önerilir):</label>
-                    <input type="text" id="iletisim" placeholder="Sadece bu iş için açtığınız bir e-posta veya sosyal medya hesabı">
-                    <small>Eşyayı bulan kişinin size ulaşabilmesi için buraya (telefon numaranız dışında) güvenli bir iletişim bilgisi yazın.</small>
-                </div>
-
-                <button type="submit" id="submit-button" class="btn">İlanı Gönder</button>
-            </form>
+                    <button type="submit" id="submit-button" class="btn">İlanı Gönder</button>
+                </form>
             </div>
         </section>
     </main>
 
     <script src="js/firebase-config.js"></script>
-    <script src="js/app.js"></script> </body>
+    <script src="js/app.js"></script> 
+</body>
 </html>
