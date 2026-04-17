@@ -25,7 +25,7 @@ Bu proje, kayıp eşya bildirim süreçlerini dijitalleştirerek hem vatandaşla
 * `js/ilanlar.js`: Veritabanından veri çekme ve listeleme algoritmaları.
 
 ## Geliştirici
-**Uğur** *Yalova Üniversitesi - Bilgisayar Programcılığı 1. Sınıf Öğrencisi* **GANO:** 3.30
+**Uğur** *Yalova Üniversitesi - Bilgisayar Programcılığı 1. Sınıf Öğrencisi*
 
 ---
 *Bu proje, TÜBİTAK proje yarışmaları standartlarına uygun olarak, bir toplumsal soruna teknolojik çözüm üretme amacıyla geliştirilmiştir.*
