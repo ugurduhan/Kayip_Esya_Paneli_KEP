@@ -1,5 +1,4 @@
-/* ============ STICKY HATA DÜZELTME KODU ============ */
-/* Bu bölüm, başlığın üste yapışmasını engelleyen gizli kuralları ezer */
+
 html,
 body {
     overflow: visible !important;
@@ -8,9 +7,8 @@ body {
     height: auto !important;
     transform: none !important;
 }
-/* ================================================== */
 
-/* Genel Ayarlar */
+/* Base styles */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: #f0f2f5;
@@ -31,18 +29,17 @@ hr {
     margin: 30px 0;
 }
 
-/* --- ÜST BAŞLIK BÖLÜMÜ (Sarı Banner + Menü) --- */
-
+/* Navbar & Sistem Uyarı Banner'ı */
 .site-top-header {
-    position: sticky; /* Yapışkan özellik */
-    top: 0;           /* En üste yapış */
-    z-index: 1000;    /* Diğer her şeyin üstünde dur */
+    position: sticky; 
+    top: 0;           
+    z-index: 1000; /* Aşağıdaki form ve kartların altında kalmaması için */
     width: 100%;
 }
 
 .project-banner {
-    background-color: #fffbe6; /* Açık sarı */
-    color: #5d4a00; /* Koyu sarı/kahve tonu */
+    background-color: #fffbe6; 
+    color: #5d4a00; 
     border-bottom: 1px solid #ffe58f;
     padding: 10px 15px;
     text-align: center;
@@ -89,8 +86,7 @@ hr {
     color: #fff;
 }
 
-/* --- FORM ALANLARI --- */
-
+/* Form Layouts */
 .form-container, .listings-list {
     background: #fff;
     padding: 30px;
@@ -108,14 +104,14 @@ hr {
     margin: 20px 0 15px 0;
 }
 
-/* Yan yana duran kutular için Grid yapısı */
+/* Form elemanlarını hizalamak için grid yapısı */
 .form-row {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* 3'lü yan yana */
+    grid-template-columns: 1fr 1fr 1fr; 
     gap: 20px;
 }
 
-/* Eğer satırda sadece 2 eleman varsa 2'ye böl */
+/* Satırda sadece 2 input varsa alanı ikisine böl */
 .form-row:has(.form-group:nth-child(2):last-child) {
     grid-template-columns: 1fr 1fr;
 }
@@ -170,22 +166,20 @@ hr {
     cursor: not-allowed;
 }
 
-/* --- KOŞULLU (GİZLİ) ALANLAR --- */
-
+/* Dinamik Form Alanları (JS ile kontrol ediliyor) */
 .hidden {
     display: none !important;
 }
 
 .conditional-field {
-    border-left: 4px solid #4a90e2; /* Sol tarafa mavi çizgi */
+    border-left: 4px solid #4a90e2; 
     background: #f9f9f9;
     padding: 20px;
     border-radius: 0 8px 8px 0;
     margin-bottom: 20px;
 }
 
-/* --- İLAN LİSTESİ VE FİLTRELEME --- */
-
+/* Kayıp Eşya Kartları ve Arama */
 .listings-list h2 {
     border-bottom: 2px solid #f0f2f5;
     padding-bottom: 10px;
@@ -262,7 +256,7 @@ hr {
     padding: 12px;
     border-radius: 6px;
     font-weight: 500;
-    word-break: break-all;
+    word-break: break-all; /* Uzun maillerin veya linklerin taşmasını engeller */
 }
 
 .listing-card .contact-none {
@@ -279,10 +273,10 @@ hr {
     text-align: right;
 }
 
-/* --- MOBİL UYUMLULUK (Responsive) --- */
+/* Mobile uyumluluk - 600px altı ekranlar */
 @media (max-width: 600px) {
     .form-row {
-        grid-template-columns: 1fr; /* Tek sütuna düşür */
+        grid-template-columns: 1fr; 
         gap: 0;
     }
     
